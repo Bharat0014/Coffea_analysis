@@ -133,7 +133,7 @@ class NanoProcessor(processor.ProcessorABC):
 
     #Here processor ends
 
-
+#======================================= Data Set========================================
 fileset = {
     'Data':[
         '/persistent/data2/ph20059/RUN2_UL/Tree_crab/SEVENTEEN/Data_mu/Run2017B_mu/SingleMuon/Tree_27_Feb24_Run2017B_mu/240227_035410/0000/*.root',
@@ -251,7 +251,7 @@ fileset = {
     ],
     
 }
-
+#=====================================Here we add wildcard path ==========================================
 import glob
 
 '''
@@ -282,7 +282,7 @@ for dataset, paths in fileset.items():
 
 resolved_fileset
 
-
+#================================processing the processor====================================
 processor_instance = NanoProcessor()
 output = processor.run_uproot_job(
     resolved_fileset,
@@ -291,19 +291,19 @@ output = processor.run_uproot_job(
     executor=processor.futures_executor,
     executor_args={'workers': 40, 'schema': processor.NanoAODSchema}
 )
-
+#================printing sellected events===============================================
 for dataset, result in output.items():
     print(f"Results for {dataset}:")
     for region, data in result.items():
         if region != 'sumw':
             print(f"  {region}: {data['selEvents']} selected events")
-
+#===============printting Wtevents======================================================
 for dataset, result in output.items():
     print(f"Results for {dataset}:")
     for region, data in result.items():
         if region != 'sumw':
             print(f"  {region}: {data['wtEvents']} WT events")
-
+#============================adding Luminosity wt====================================
 import MCsample_Nevent_Xsec2
 import pandas as pd
 
