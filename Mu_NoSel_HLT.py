@@ -453,7 +453,7 @@ print(dff.to_string(index=False))
 
 latex_code = dff.to_latex(index=False, 
                          longtable=False,
-                         float_format="{:0.1f}".format)  # Formatting floating point numbers
+                         float_format="{:0.2f}".format)  # Formatting floating point numbers
 
 # Assuming df has 3 columns. Adjust '|l|l|l|' as per your DataFrame's columns.
 column_format = '|l|l|l|' 
