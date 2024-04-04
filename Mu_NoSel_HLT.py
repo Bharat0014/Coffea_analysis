@@ -98,13 +98,14 @@ class NanoProcessor(processor.ProcessorABC):
                 except:
                     #print(f"genWeight is not there for dataset {dataset}; adding 1s as genWeights")
                     weights.add("genWt", weight = np.ones(sum(event_level), dtype = float))
+                '''
                 try:
                     weights.add("LHEWeightSign", weight = events[event_level].LHEWeight.originalXWGTUP/fabs(events[event_level].LHEWeight.originalXWGTUP))
                     #print("Added LHEWeightSign")
                 except:
                     #print(f"LHEWeight is not there for dataset {dataset}; adding +1s as LHEWeightSign")
                     weights.add("LHEWeightSign", weight = np.ones(sum(event_level), dtype = float))
-
+                '''
                 
                 try:
                     weights.add("PUWt", weight = events[event_level].puWeight, weightUp = events[event_level].puWeightUp, weightDown = events[event_level].puWeightDown)
